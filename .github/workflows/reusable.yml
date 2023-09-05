@@ -15,7 +15,7 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
         with:
-          repository: Sgomez04/AprendiendoActions3.0Por 
+          repository: Sgomez04/AprendiendoActions3.0 
 
       - name: Mostrar datos JSON
         run: |
