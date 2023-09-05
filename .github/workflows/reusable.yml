@@ -1,0 +1,33 @@
+name: reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        description: "Environment"
+        required: true
+
+jobs:
+  json-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+        with:
+          repository: Sgomez04/AprendiendoActions3.0Por 
+
+      - name: Mostrar datos JSON
+        run: |
+          JSON_DATA=$(cat configuration.json)
+          lambda_name=$(echo "$JSON_DATA" | jq -r '.${{ inputs.env }}.lambda_name')
+          path=$(echo "$JSON_DATA" | jq -r '.${{ inputs.env }}.path')
+          bucket_name=$(echo "$JSON_DATA" | jq -r '.${{ inputs.env }}.bucket_name')
+          artifact_name=$(echo "$JSON_DATA" | jq -r '.${{ inputs.env }}.artifact_name')
+          
+          echo "lambda_name: $lambda_name"
+          echo "path: $path"
+          echo "bucket_name: $bucket_name"
+          echo "artifact_name: $artifact_name"
+  
+  
