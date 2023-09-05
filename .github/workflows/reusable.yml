@@ -5,6 +5,7 @@ on:
     inputs:
       env:
         description: "Environment"
+        type: string 
         required: true
 
 jobs:
